@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #091921;
+            min-height: 100vh;
+        }
+
+        .clock {
+            margin: auto;
+            border: 4px solid #091921;
+            background: url(clock.png) no-repeat;
+            background-size: 100%;
+            width: 30vw;
+            height: 30vw;
+            position: relative;
+            box-shadow: 0px -15px 15px rgba(255, 255, 255, 0.05),
+                inset 0px -15px 15px rgba(255, 255, 255, 0.05),
+                0px 15px 15px rgba(255, 255, 255, 0.3),
+                inset 0px 15px 15px rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .clock:before {
+
+            content: '';
+            position: absolute;
+            top: 48%;
+            height: 3%;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1000;
+            width: 3%;
+            left: 48.5%;
+        }
+
+        .hour,
+        .min,
+        .sec {
+
+            position: absolute;
+        }
+
+        .hour {
+            transform-origin: bottom;
+            width: 1%;
+            height: 15%;
+            top: 35%;
+            left: 49.3%;
+            background: #ff105e;
+            border-radius: 26%;
+
+        }
+
+        .min {
+            transform-origin: bottom;
+            width: 1%;
+            height: 22%;
+            top: 28%;
+            left: 49.3%;
+            background: #fff;
+            border-radius: 26%;
+
+        }
+
+        .sec {
+            transform-origin: bottom;
+            border-radius: 26%;
+            width: 1%;
+            height: 32%;
+            top: 17%;
+            left: 49.3%;
+            background: #fff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+    </div>
+    <script>
+        setInterval(() => {
+            d = new Date();
+            h = d.getHours();
+            m = d.getMinutes();
+            s = d.getSeconds();
+            hrotation = 30 * h + m / 2;
+            mrotation = 6 * m;
+            srotation = 6 * s;
+
+            document.querySelector(".hour").style.transform = `rotate(${hrotation}deg)`;
+            document.querySelector(".min").style.transform = `rotate(${mrotation}deg)`;
+            document.querySelector(".sec").style.transform = `rotate(${srotation}deg)`;
+        }, 1000)
+    </script>
+</body>
+
+</html>
